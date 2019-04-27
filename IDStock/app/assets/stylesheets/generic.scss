@@ -1,3 +1,5 @@
+$primaryActiveColor: #2aa198;
+
 @mixin centerfiy{
   display: flex;
   justify-content: center;
@@ -6,4 +8,9 @@
 
 @mixin fullScreen{
     height: 100vh;
+}
+
+
+a.navbar-item.is-active{
+  color: $primaryActiveColor !important;
 }

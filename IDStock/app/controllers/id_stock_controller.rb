@@ -1,6 +1,6 @@
 class IdStockController < ApplicationController
   def SecurityMaster
-
+    @sitename_count = ActiveRecord::Base.connection.execute("SELECT sitename, COUNT(sitename) FROM master GROUP BY sitename")
   end
 
   def Exchange
@@ -13,5 +13,8 @@ class IdStockController < ApplicationController
   end
 
   def TopLoser
+  end
+
+  def UpComingDividend
   end
 end
