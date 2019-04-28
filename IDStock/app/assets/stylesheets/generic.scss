@@ -14,3 +14,8 @@ $primaryActiveColor: #2aa198;
 a.navbar-item.is-active{
   color: $primaryActiveColor !important;
 }
+
+span .LargeBreak{
+  display: block;
+  margin-bottom: 20px;
+}

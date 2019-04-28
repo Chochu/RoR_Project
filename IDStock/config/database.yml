@@ -24,9 +24,9 @@ default: &default
 development:
   <<: *default
   database: IDStock
-  username: postgres
-  password: <%= ENV['POSTGRE_PASSWORD'] %>
-  host: localhost
+  username: <%= Rails.application.credentials.dig(:postgres_username) %>
+  password: <%= Rails.application.credentials.dig(:postgres_password) %>
+  host: 192.168.29.137
   port: 5432
   schema_search_path: public
 
@@ -87,4 +87,4 @@ production:
   <<: *default
   database: IDStock_production
   username: IDStock
-  password: <%= ENV['IDSTOCK_DATABASE_PASSWORD'] %>
+  password: 1 #<%= ENV['IDSTOCK_DATABASE_PASSWORD'] %>

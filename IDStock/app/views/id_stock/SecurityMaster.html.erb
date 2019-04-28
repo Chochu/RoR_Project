@@ -1,30 +1,74 @@
 
-  <section class="section">
-    <div class="container is-fluid">
-      <section class="hero">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Security Master
-            </h1>
-            <div class="Search_SM">
-
-              <div class="field">
-                <div class="control">
-                  <input type="text" class="input" name="Search_input" placeholder="Security Code">
-                </div>
-              </div>
-
+<section class="section">
+    <div class="container">
+      <h1 class="title">Security Master </h1>
+      <div class="field">
+        <div class="dropdown">
+            <div class="dropdown-trigger">
+                <input id="prova" class="input" type="text" placeholder="Security Code" aria-haspopup="true" aria-controls="prova-menu">
             </div>
-          </div>
-
+            <div class="dropdown-menu" id="prova-menu" role="menu" />
         </div>
-      </section>
-
+      </div>
     </div>
-  </section>
 
+</section>
+
+<script src="https://cdn.rawgit.com/mattmezza/bulmahead/master/dist/bulmahead.bundle.js"></script>
 <script type="text/javascript">
   //Set the menu active, is-active
-  $("[name='navbar_SM']").addClass("is-active")
+  // $("[name='navbar_SM']").addClass("is-active")
+  //
+  // //Hide divA
+  // if($("#Security-name").text() == "Section"){
+  //   $("#security_section").hide();
+  // }
+  //
+  // var api = function(inputValue) {
+  //   return fetch('http://localhost:3000/id_stock/Security?Security='+inputValue).then(function(resp) {
+  //     return resp.json()
+  //   })
+  //   //No need to filter since it's done on the back end
+  //   // .then(function(secMasters) {
+  //   //   return secMasters.filter(function(secMaster) {
+  //   //     return secMaster.SecurityName.startsWith(inputValue)
+  //   //   })
+  //   // })
+  //   .then(function(filtered) {
+  //     return filtered.map(function(secMaster) {
+  //       return {label: secMaster.SecurityName, value: secMaster.Symbol}
+  //     })
+  //   }).then(function(transformed) {
+  //     return transformed.slice(0, 5)
+  //   })
+  // }
+  //
+  // var onSelect = function(state){
+  //   // console.log(state.label + ": " + state.value )
+  //   $("#Security-name").text(state.label);
+  //
+  //   // var getData = fetch('http://localhost:3000/id_stock/SecurityDetails?symbol='+state.value).then(function(resp) {
+  //   //   return resp.json()
+  //   // }).then(function(secMaster){
+  //   //   $("#security_section").show();
+  //   //   $("#c_symbol").text(secMaster['symbol']);
+  //   //   $("#c_securityName").text(secMaster['securityName']);
+  //   //   $("#c_companyName").text(secMaster['companyName']);
+  //   //   $("#c_exchange").text(secMaster['exchange']);
+  //   //   $("#c_industry").text(secMaster['industry']);
+  //   //   $("#c_website").text(secMaster['website']);
+  //   //   $("#c_description").text(secMaster['description']);
+  //   //   $("#c_sector").text(secMaster['sector']);
+  //   // })
+  //
+  //   console.log(getData);
+  // }
+  //
+  // $(".SummaryBtn").on('click','a' ,function(event){
+  //   event.preventDefault();
+  //   window.location.href = $(this).attr('href') + "?symbol=" + $("#c_symbol").text();
+  // });
+  //
+  // bulmahead('prova', 'prova-menu', api ,onSelect ,200);
+
 </script>

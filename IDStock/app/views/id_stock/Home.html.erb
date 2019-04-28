@@ -1,0 +1,112 @@
+
+<section class="section">
+    <div class="container">
+      <h1 class="title">Home</h1>
+      <div class="field">
+        <div class="dropdown">
+            <div class="dropdown-trigger">
+                <input id="prova" class="input" type="text" placeholder="Security Code" aria-haspopup="true" aria-controls="prova-menu">
+            </div>
+            <div class="dropdown-menu" id="prova-menu" role="menu" />
+        </div>
+      </div>
+    </div>
+    <section class="section" id="security_section">
+      <div class="container">
+        <div class="div">
+          <div class="SecurityName"><h1 class="title" id="Security-name">Section</h1></div>
+          <div class="SummaryBtn"><%= link_to "Summary", {controller: "id_stock", action: "SecurityMaster" }, :class => "button is-link"  %></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth">Symbol</div>
+          <div class="column" id="c_symbol"></div>
+        </div>
+        <div class="columns is-one-fifth">
+          <div class="column is-one-fifth">Security Name</div>
+          <div class="column" id="c_securityName"></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth">Company Name</div>
+          <div class="column" id="c_companyName"></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth">Exchange</div>
+          <div class="column" id="c_exchange"></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth">Industry</div>
+          <div class="column" id="c_industry"></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth">Website</div>
+          <div class="column" id="c_website"></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth">Description</div>
+          <div class="column" id="c_description"></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth">Sector</div>
+          <div class="column" id="c_sector"></div>
+        </div>
+    </section>
+</section>
+
+<script src="https://cdn.rawgit.com/mattmezza/bulmahead/master/dist/bulmahead.bundle.js"></script>
+<script type="text/javascript">
+  //Set the menu active, is-active
+  $("[name='navbar_H']").addClass("is-active")
+
+  //Hide divA
+  if($("#Security-name").text() == "Section"){
+    $("#security_section").hide();
+  }
+
+  var api = function(inputValue) {
+    return fetch('http://localhost:3000/id_stock/Security?Security='+inputValue).then(function(resp) {
+      return resp.json()
+    })
+    //No need to filter since it's done on the back end
+    // .then(function(secMasters) {
+    //   return secMasters.filter(function(secMaster) {
+    //     return secMaster.SecurityName.startsWith(inputValue)
+    //   })
+    // })
+    .then(function(filtered) {
+      return filtered.map(function(secMaster) {
+        return {label: secMaster.SecurityName, value: secMaster.Symbol}
+      })
+    }).then(function(transformed) {
+      return transformed.slice(0, 5)
+    })
+  }
+
+  var onSelect = function(state){
+    // console.log(state.label + ": " + state.value )
+    $("#Security-name").text(state.label);
+
+    var getData = fetch('http://localhost:3000/id_stock/SecurityDetails?symbol='+state.value).then(function(resp) {
+      return resp.json()
+    }).then(function(secMaster){
+      $("#security_section").show();
+      $("#c_symbol").text(secMaster['symbol']);
+      $("#c_securityName").text(secMaster['securityName']);
+      $("#c_companyName").text(secMaster['companyName']);
+      $("#c_exchange").text(secMaster['exchange']);
+      $("#c_industry").text(secMaster['industry']);
+      $("#c_website").text(secMaster['website']);
+      $("#c_description").text(secMaster['description']);
+      $("#c_sector").text(secMaster['sector']);
+    })
+
+    console.log(getData);
+  }
+
+  $(".SummaryBtn").on('click','a' ,function(event){
+    event.preventDefault();
+    window.location.href = $(this).attr('href') + "?symbol=" + $("#c_symbol").text();
+  });
+
+  bulmahead('prova', 'prova-menu', api ,onSelect ,200);
+
+</script>

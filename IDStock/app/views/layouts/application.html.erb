@@ -7,7 +7,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js" integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -31,7 +32,7 @@
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
 
-            <%= link_to "Home", {controller: "id_stock", action: "SecurityMaster"}, :class => "navbar-item", :name => "navbar_H" %>
+            <%= link_to "Home", {controller: "id_stock", action: "Home"}, :class => "navbar-item", :name => "navbar_H" %>
 
             <%= link_to "Security Master", {controller: "id_stock", action: "SecurityMaster"}, :class => "navbar-item", :name => "navbar_SM" %>
 
@@ -46,7 +47,7 @@
                 <%= link_to "Top Gainer", {controller: "id_stock", action: "TopGainer"}, :class => "navbar-item"%>
                 <%= link_to "Top Loser", {controller: "id_stock", action: "TopLoser"}, :class => "navbar-item"%>
                 <%= link_to "Upcoming Dividend", {controller: "id_stock", action: "TopGainer"}, :class => "navbar-item"%>
-            
+
                 <hr class="navbar-divider">
                 <a class="navbar-item">
                   Report an issue
@@ -70,6 +71,7 @@
         </div>
       </nav>
     </header>
+    <br><span class="LargeBreak"></span>
 
       <%= yield %>
 

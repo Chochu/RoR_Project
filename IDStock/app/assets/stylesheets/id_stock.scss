@@ -3,3 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "./generic";
+
+#prova-menu{
+  width: 100%
+}
+
+.dropdown, .dropdown-trigger{
+  width: 100%
+}
+
+.SecurityName{
+  width: 70%;
+  display: inline-flex;
+}
+.SummaryBtn{
+  width: 20%;
+  display: inline-flex;
+  a{
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
