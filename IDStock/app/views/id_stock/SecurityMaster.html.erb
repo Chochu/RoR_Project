@@ -1,7 +1,7 @@
 
 <section class="section">
     <div class="container">
-      <h1 class="title">Security Master </h1>
+      <h1 class="title">Security Master</h1>
       <div class="field">
         <div class="dropdown">
             <div class="dropdown-trigger">
@@ -11,64 +11,218 @@
         </div>
       </div>
     </div>
+    <section class="section">
+      <div class="container">
+        <h1 id="SecurityName" class="title"></h1>
+        <h2><%= @symbol %></h2>
+        <hr>
 
+        <div class="columns">
+          <div class="column is-one-fifth"><h3 class="subtitle">Region</h3></div>
+          <div class="column is-two-fifth" id="c_Region"></div>
+          <div class="column is-one-fifth"><h3 class="subtitle">Exchange</h3></div>
+          <div class="column is-two-fifth" id="c_exchange"></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth"><h3  class="subtitle">iexID</h3></div>
+          <div class="column is-two-fifth" id="c_iexID"></div>
+          <div class="column is-one-fifth"><h3  class="subtitle">Currency</h3></div>
+          <div class="column is-two-fifth" id="c_Currency"></div>
+        </div>
+        <div class="columns">
+          <div class="column is-one-fifth"><h3  class="subtitle">StockType</h3></div>
+          <div class="column is-two-fifth" id="c_StockType"></div>
+          <div class="column is-one-fifth"><h3  class="subtitle">Start Date</h3></div>
+          <div class="column is-two-fifth" id="c_StartDate"></div>
+        </div>
+
+      </div>
+    </section>
+</section>
+<section class="section">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Market Cap</th>
+        <td>0.091291</td>
+        <th>Float</th>
+        <td>23</td>
+        <th>Employees</th>
+        <td>3</td>
+        <th>Shares Outstanding</th>
+        <td>3</td>
+      </tr>
+      <tr>
+        <th>Next Earnings Date</th>
+        <td>0.091291</td>
+        <th>ex Dividend Date</th>
+        <td>23</td>
+        <th>Next Dividend Rate</th>
+        <td>3</td>
+        <th>Dividend Yield</th>
+        <td>3</td>
+      </tr>
+      <tr>
+        <th>ttm EPS</th>
+        <td>0.091291</td>
+        <th>ttm DividendRate</th>
+        <td>23</td>
+        <th>Max ChangePercent</th>
+        <td>3</td>
+        <th>peRatio</th>
+        <td> </td>
+      </tr>
+      <tr>
+        <th>Week 52 Change</th>
+        <td>0.091291</td>
+        <th>Week 52 high</th>
+        <td>23</td>
+        <th>Week 52 low</th>
+        <td>3</td>
+        <th> </th>
+        <td> </td>
+      </tr>
+      <tr>
+        <th>200 Days Moving Avg</th>
+        <td>0.091291</td>
+        <th>50 Days Moving Avg</th>
+        <td>23</td>
+        <th>10 Avg Volume</th>
+        <td>3</td>
+        <th>30 Avg Volume</th>
+        <td> </td>
+      </tr>
+      <tr>
+        <th>5 Year % Change</th>
+        <td>0.091291</td>
+        <th>2 Year % Change</th>
+        <td>23</td>
+        <th>1 Year % Change</th>
+        <td>3</td>
+        <th>YTD Year % Change </th>
+        <td>4</td>
+      </tr>
+      <tr>
+        <th>6 Month % Change</th>
+        <td>0.091291</td>
+        <th>3 Month % Change</th>
+        <td>23</td>
+        <th>1 Month % Change</th>
+        <td>3</td>
+        <th> </th>
+        <td> </td>
+      </tr>
+      <tr>
+        <th>30 Days % Change</th>
+        <td>0.091291</td>
+        <th>5 Days % Change</th>
+        <td> </td>
+        <th></th>
+        <td></td>
+        <th></th>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </section>
 
-<script src="https://cdn.rawgit.com/mattmezza/bulmahead/master/dist/bulmahead.bundle.js"></script>
+
+
 <script type="text/javascript">
-  //Set the menu active, is-active
-  // $("[name='navbar_SM']").addClass("is-active")
-  //
-  // //Hide divA
-  // if($("#Security-name").text() == "Section"){
-  //   $("#security_section").hide();
-  // }
-  //
-  // var api = function(inputValue) {
-  //   return fetch('http://localhost:3000/id_stock/Security?Security='+inputValue).then(function(resp) {
-  //     return resp.json()
-  //   })
-  //   //No need to filter since it's done on the back end
-  //   // .then(function(secMasters) {
-  //   //   return secMasters.filter(function(secMaster) {
-  //   //     return secMaster.SecurityName.startsWith(inputValue)
-  //   //   })
-  //   // })
-  //   .then(function(filtered) {
-  //     return filtered.map(function(secMaster) {
-  //       return {label: secMaster.SecurityName, value: secMaster.Symbol}
-  //     })
-  //   }).then(function(transformed) {
-  //     return transformed.slice(0, 5)
-  //   })
-  // }
-  //
-  // var onSelect = function(state){
-  //   // console.log(state.label + ": " + state.value )
-  //   $("#Security-name").text(state.label);
-  //
-  //   // var getData = fetch('http://localhost:3000/id_stock/SecurityDetails?symbol='+state.value).then(function(resp) {
-  //   //   return resp.json()
-  //   // }).then(function(secMaster){
-  //   //   $("#security_section").show();
-  //   //   $("#c_symbol").text(secMaster['symbol']);
-  //   //   $("#c_securityName").text(secMaster['securityName']);
-  //   //   $("#c_companyName").text(secMaster['companyName']);
-  //   //   $("#c_exchange").text(secMaster['exchange']);
-  //   //   $("#c_industry").text(secMaster['industry']);
-  //   //   $("#c_website").text(secMaster['website']);
-  //   //   $("#c_description").text(secMaster['description']);
-  //   //   $("#c_sector").text(secMaster['sector']);
-  //   // })
-  //
-  //   console.log(getData);
-  // }
-  //
-  // $(".SummaryBtn").on('click','a' ,function(event){
-  //   event.preventDefault();
-  //   window.location.href = $(this).attr('href') + "?symbol=" + $("#c_symbol").text();
-  // });
-  //
-  // bulmahead('prova', 'prova-menu', api ,onSelect ,200);
+  // Set the menu active, is-active
+  $("[name='navbar_SM']").addClass("is-active")
+
+  var api = function(inputValue) {
+    return fetch('http://localhost:3000/id_stock/Security?Security='+inputValue).then(function(resp) {
+      return resp.json()
+    }).then(function(filtered) {
+      return filtered.map(function(secMaster) {
+        return {label: secMaster.SecurityName, value: secMaster.Symbol}
+      })
+    }).then(function(transformed) {
+      return transformed.slice(0, 5)
+    })
+  }
+
+  var onSelect = function(state){
+    window.location.href = window.location.pathname + "?Symbol=" + state.value;
+  }
+
+  bulmahead('prova', 'prova-menu', api ,onSelect ,200);
+
+  $( document ).on('turbolinks:load', function() {
+    return fetch('http://localhost:3000/id_stock/SecuritySymbol?Symbol=<%= @symbol %>').then(function(resp){
+      return resp.json();
+    }).then(function(mapJson) {
+      return mapJson.map(function(secMaster) {
+        return {SecurityName: secMaster.SecurityName,
+                Region: secMaster.Region,
+                Startdate: secMaster.Startdate,
+                Symbol: secMaster.Symbol,
+                iexID: secMaster.iexID,
+                StockType: secMaster.StockType,
+                Exchange: secMaster.exchange,
+                Currency: secMaster.currency
+                }
+      })
+    }).then(function(secObj){
+        $('#SecurityName').text(secObj[0].SecurityName);
+        $('#c_StartDate').text(secObj[0].Startdate);
+        $('#c_Region').text(secObj[0].Region);
+        $('#c_iexID').text(secObj[0].iexID);
+        $('#c_StockType').text(secObj[0].StockType);
+        $('#c_exchange').text(secObj[0].Exchange);
+        $('#c_Currency').text(secObj[0].Currency);
+    });
+  })
+
+  var staticjson = String.raw`{
+      -"week52change": 0.091291,
+      -"week52high": 19.71,
+      -"week52low": 13.09,
+
+      -"marketcap": null,
+      -"employees": null,
+
+      -"day200MovingAvg": 16.89,
+      -"day50MovingAvg": 17.81,
+
+      -"float": null,
+      -"sharesOutstanding": 0,
+
+      -"avg10Volume": 2231.8,
+      -"avg30Volume": 2394.1,
+
+      -"ttmEPS": null,
+      -"ttmDividendRate": null,
+
+      "companyName": "Entrepreneur 30 Fund",
+
+      -"maxChangePercent": 0.212748,
+
+      -"year5ChangePercent": 0.205827,
+      -"year2ChangePercent": 0.212606,
+
+      -"year1ChangePercent": 0.09283,
+      -"ytdChangePercent": 0.28868,
+
+      -"month6ChangePercent": 0.168903,
+      -"month3ChangePercent": 0.169344,
+
+      -"month1ChangePercent": 0.07966,
+
+      "day30ChangePercent": 0.072021,
+      "day5ChangePercent": 0.019977,
+
+      -"nextDividendRate": null,
+      -"dividendYield": null,
+
+      "nextEarningsDate": null,
+      "exDividendDate": null,
+
+      -"peRatio": null,
+      "beta": null
+  }`;
+
 
 </script>

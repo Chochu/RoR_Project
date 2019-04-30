@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :login
   root "login#index"
 
-  get 'id_stock/SecurityMaster'
+  # resources :id_stock
+  # get 'id_stock/SecurityMaster'
   get 'id_stock/Exchange'
   get 'id_stock/TopGainer'
   get 'id_stock/TopLoser'
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
 
   match 'id_stock/Security' => 'id_stock#get_SecurityName', via: :get
   match 'id_stock/SecurityDetails' => 'id_stock#get_SecurityDetail', via: :get
-  # match 'id_stock/Summary'  => 'id_stock#Summary', via: :post
+  match 'id_stock/SecurityMaster'  => 'id_stock#SecurityMaster', via: :get
+  match 'id_stock/SecuritySymbol' => 'id_stock#get_SecuritySymbol', via: :get
+  match 'id_stock/SecurityStat' => 'id_stock#get_SecurityStat', via: :get
 
 end

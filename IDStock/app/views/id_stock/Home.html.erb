@@ -85,7 +85,7 @@
     // console.log(state.label + ": " + state.value )
     $("#Security-name").text(state.label);
 
-    var getData = fetch('http://localhost:3000/id_stock/SecurityDetails?symbol='+state.value).then(function(resp) {
+    var getData = fetch('http://localhost:3000/id_stock/SecurityDetails?Symbol='+state.value).then(function(resp) {
       return resp.json()
     }).then(function(secMaster){
       $("#security_section").show();
@@ -104,7 +104,7 @@
 
   $(".SummaryBtn").on('click','a' ,function(event){
     event.preventDefault();
-    window.location.href = $(this).attr('href') + "?symbol=" + $("#c_symbol").text();
+    window.location.href = $(this).attr('href') + "?Symbol=" + $("#c_symbol").text();
   });
 
   bulmahead('prova', 'prova-menu', api ,onSelect ,200);
