@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <section class="section">
+    <section class="section" id="no-bottom-padding">
       <div class="container">
         <h1 id="SecurityName" class="title"></h1>
         <h2><%= @symbol %></h2>
@@ -39,84 +39,84 @@
       </div>
     </section>
 </section>
-<section class="section">
+<section class="section" id="section-table">
   <table class="table">
     <tbody>
       <tr>
         <th>Market Cap</th>
-        <td>0.091291</td>
+        <td class="marketcap"></td>
         <th>Float</th>
-        <td>23</td>
+        <td class="float"></td>
         <th>Employees</th>
-        <td>3</td>
+        <td class="employees"></td>
         <th>Shares Outstanding</th>
-        <td>3</td>
+        <td class="sharesOutstanding"></td>
       </tr>
       <tr>
         <th>Next Earnings Date</th>
-        <td>0.091291</td>
+        <td class="nextEarningsDate"></td>
         <th>ex Dividend Date</th>
-        <td>23</td>
+        <td class="exDividendDate"></td>
         <th>Next Dividend Rate</th>
-        <td>3</td>
+        <td class="nextDividendRate"></td>
         <th>Dividend Yield</th>
-        <td>3</td>
+        <td class="dividendYield"></td>
       </tr>
       <tr>
         <th>ttm EPS</th>
-        <td>0.091291</td>
+        <td class="ttmEPS"></td>
         <th>ttm DividendRate</th>
-        <td>23</td>
+        <td class="ttmDividendRate"></td>
         <th>Max ChangePercent</th>
-        <td>3</td>
+        <td class="maxChangePercent"></td>
         <th>peRatio</th>
-        <td> </td>
+        <td class="peRatio"> </td>
       </tr>
       <tr>
         <th>Week 52 Change</th>
-        <td>0.091291</td>
+        <td class="week52change"></td>
         <th>Week 52 high</th>
-        <td>23</td>
+        <td class="week52high"></td>
         <th>Week 52 low</th>
-        <td>3</td>
+        <td class="week52low"></td>
         <th> </th>
         <td> </td>
       </tr>
       <tr>
         <th>200 Days Moving Avg</th>
-        <td>0.091291</td>
+        <td class="day200MovingAvg"></td>
         <th>50 Days Moving Avg</th>
-        <td>23</td>
-        <th>10 Avg Volume</th>
-        <td>3</td>
+        <td class="day50MovingAvg"></td>
         <th>30 Avg Volume</th>
-        <td> </td>
+        <td class="avg30Volume"></td>
+        <th>10 Avg Volume</th>
+        <td class="avg10Volume"></td>
       </tr>
       <tr>
         <th>5 Year % Change</th>
-        <td>0.091291</td>
+        <td class="year5ChangePercent"></td>
         <th>2 Year % Change</th>
-        <td>23</td>
+        <td class="year2ChangePercent"></td>
         <th>1 Year % Change</th>
-        <td>3</td>
+        <td class="year1ChangePercent"></td>
         <th>YTD Year % Change </th>
-        <td>4</td>
+        <td class="ytdChangePercent"></td>
       </tr>
       <tr>
         <th>6 Month % Change</th>
-        <td>0.091291</td>
+        <td class="month6ChangePercent"></td>
         <th>3 Month % Change</th>
-        <td>23</td>
+        <td class="month3ChangePercent"></td>
         <th>1 Month % Change</th>
-        <td>3</td>
+        <td class="month1ChangePercent"></td>
         <th> </th>
         <td> </td>
       </tr>
       <tr>
         <th>30 Days % Change</th>
-        <td>0.091291</td>
+        <td class="day30ChangePercent"></td>
         <th>5 Days % Change</th>
-        <td> </td>
+        <td class="day5ChangePercent"> </td>
         <th></th>
         <td></td>
         <th></th>
@@ -151,7 +151,7 @@
   bulmahead('prova', 'prova-menu', api ,onSelect ,200);
 
   $( document ).on('turbolinks:load', function() {
-    return fetch('http://localhost:3000/id_stock/SecuritySymbol?Symbol=<%= @symbol %>').then(function(resp){
+    fetch('http://localhost:3000/id_stock/SecuritySymbol?Symbol=<%= @symbol %>').then(function(resp){
       return resp.json();
     }).then(function(mapJson) {
       return mapJson.map(function(secMaster) {
@@ -174,55 +174,41 @@
         $('#c_exchange').text(secObj[0].Exchange);
         $('#c_Currency').text(secObj[0].Currency);
     });
+
+    fetch('http://localhost:3000/id_stock/SecurityStat?Symbol=<%= @symbol %>').then(function(resp){
+      return resp.json();
+    }).then(function(mapJson) {
+      $('.week52change').text(mapJson.week52change);
+      $('.week52high').text(mapJson.week52high);
+      $('.week52low').text(mapJson.week52low);
+      $('.marketcap').text(mapJson.marketcap);
+      $('.employees').text(mapJson.employees);
+      $('.day200MovingAvg').text(mapJson.day200MovingAvg);
+      $('.day50MovingAvg').text(mapJson.day50MovingAvg);
+      $('.float').text(mapJson.float);
+      $('.sharesOutstanding').text(mapJson.sharesOutstanding);
+      $('.avg10Volume').text(mapJson.avg10Volume);
+      $('.avg30Volume').text(mapJson.avg30Volume);
+      $('.ttmEPS').text(mapJson.ttmEPS);
+      $('.ttmDividendRate').text(mapJson.ttmDividendRate);
+      $('.companyName').text(mapJson.companyName);
+      $('.maxChangePercent').text(mapJson.maxChangePercent);
+      $('.year5ChangePercent').text(mapJson.year5ChangePercent);
+      $('.year2ChangePercent').text(mapJson.year2ChangePercent);
+      $('.year1ChangePercent').text(mapJson.year1ChangePercent);
+      $('.ytdChangePercent').text(mapJson.ytdChangePercent);
+      $('.month6ChangePercent').text(mapJson.month6ChangePercent);
+      $('.month3ChangePercent').text(mapJson.month3ChangePercent);
+      $('.month1ChangePercent').text(mapJson.month1ChangePercent);
+      $('.day30ChangePercent').text(mapJson.day30ChangePercent);
+      $('.day5ChangePercent').text(mapJson.day5ChangePercent);
+      $('.nextDividendRate').text(mapJson.nextDividendRate);
+      $('.dividendYield').text(mapJson.dividendYield);
+      $('.nextEarningsDate').text(mapJson.nextEarningsDate);
+      $('.exDividendDate').text(mapJson.exDividendDate);
+      $('.peRatio').text(mapJson.peRatio);
+    })
+
   })
-
-  var staticjson = String.raw`{
-      -"week52change": 0.091291,
-      -"week52high": 19.71,
-      -"week52low": 13.09,
-
-      -"marketcap": null,
-      -"employees": null,
-
-      -"day200MovingAvg": 16.89,
-      -"day50MovingAvg": 17.81,
-
-      -"float": null,
-      -"sharesOutstanding": 0,
-
-      -"avg10Volume": 2231.8,
-      -"avg30Volume": 2394.1,
-
-      -"ttmEPS": null,
-      -"ttmDividendRate": null,
-
-      "companyName": "Entrepreneur 30 Fund",
-
-      -"maxChangePercent": 0.212748,
-
-      -"year5ChangePercent": 0.205827,
-      -"year2ChangePercent": 0.212606,
-
-      -"year1ChangePercent": 0.09283,
-      -"ytdChangePercent": 0.28868,
-
-      -"month6ChangePercent": 0.168903,
-      -"month3ChangePercent": 0.169344,
-
-      -"month1ChangePercent": 0.07966,
-
-      "day30ChangePercent": 0.072021,
-      "day5ChangePercent": 0.019977,
-
-      -"nextDividendRate": null,
-      -"dividendYield": null,
-
-      "nextEarningsDate": null,
-      "exDividendDate": null,
-
-      -"peRatio": null,
-      "beta": null
-  }`;
-
 
 </script>
