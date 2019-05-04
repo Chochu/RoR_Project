@@ -1,10 +1,11 @@
 class IdStockController < ApplicationController
   def SecurityMaster
     @symbol = params[:Symbol]
-
   end
 
   def Exchange
+    var_ExecStr = 'SELECT * FROM public."ExchangeMaster"'
+    @result = ActiveRecord::Base.connection.execute(var_ExecStr)
   end
 
   def Home
@@ -19,27 +20,24 @@ class IdStockController < ApplicationController
   def UpComingDividend
   end
 
+
   def get_SecuritySymbol
 
     var_symbol = params[:Symbol] == nil ? '' : %q(WHERE LOWER("Symbol") = LOWER\(') + params[:Symbol] + %q('\))
-
-    var_ExecStr = 'SELECT "SecurityName", "Region", "Startdate", "Symbol", "iexID", "StockType", exchange, currency, "isEnabled"
-	  FROM public."SecurityMaster" ' + var_symbol + ' LIMIT 1'
+    var_ExecStr = 'SELECT * FROM public."SecurityMaster" ' + var_symbol + ' LIMIT 1'
 
     render json: ActiveRecord::Base.connection.execute(var_ExecStr)
 
   end
 
   def get_SecurityName
-   # render json: 'Thanks for sending a GET request with cURL!'
 
-   var_sercurity = params[:Security] == nil ? '' : %q(WHERE LOWER("SecurityName") LIKE LOWER\(') + params[:Security] + %q(%'\))
+   if params[:Security] == nil
+     render json: 'No Security Provided'
+   end
 
-   # render json: var_sercurity
-   var_ExecStr = 'SELECT "SecurityName","Symbol"
-     FROM public."SecurityMaster" '+
-     var_sercurity +'
-     LIMIT 100'
+   var_ExecStr = %q(SELECT * from public.uf_getsecuritymasterlike\(') + params[:Security] + %q('\))
+
    #render json: var_ExecStr
    render json: ActiveRecord::Base.connection.execute(var_ExecStr)
   end

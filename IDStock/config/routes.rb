@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :login
   root "login#index"
 
-  # resources :id_stock
+  #resources :id_stock
   # get 'id_stock/SecurityMaster'
   get 'id_stock/Exchange'
   get 'id_stock/TopGainer'

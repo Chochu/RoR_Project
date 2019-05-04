@@ -33,9 +33,14 @@
   padding-bottom: 0px;
 }
 
-td {
-   font-size:10px;
- }
-th {
-  font-size:13px;
+
+#Small-table{
+  tr {
+    td {
+       font-size:10px;
+     }
+    th {
+      font-size:13px;
+    }
+  }
 }
