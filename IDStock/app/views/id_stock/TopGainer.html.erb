@@ -1,10 +1,73 @@
-
-<h1>IdStock#TopGainer</h1>
-<p>Find me in app/views/id_stock/TopGainer.html.erb</p>
-
-
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Top Gainer
+      </h1>
+    </div>
+  </div>
+</section>
+<section class="section" id="section-table">
+  <div class="container is-fullhd scrolling-wrapper">
+    <table class="table">
+      <tbody>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Company Name</th>
+            <th>Calculation Price</th>
+            <th>Open</th>
+            <th>Open Time</th>
+            <th>Close</th>
+            <th>CloseTime</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Latest Price</th>
+            <th>Latest Source</th>
+            <th>Latest Time</th>
+            <th>Latest Update</th>
+            <th>Latest Volume</th>
+            <th>iex Realtime Price</th>
+            <th>iex Realtime Size</th>
+            <th>iex Last Updated</th>
+            <th>Delayed Price</th>
+            <th>Delayed Price Time</th>
+            <th>Extended Price</th>
+            <th>Extended Change</th>
+            <th>Extended Change Percent</th>
+            <th>Extended Price Time</th>
+            <th>previousClose</th>
+            <th>Change</th>
+            <th>Change Percent</th>
+            <th>iex Market Percent</th>
+            <th>iex Volume</th>
+            <th>Avg Total Volume</th>
+            <th>iex Bid Price</th>
+            <th>iex Bid Size</th>
+            <th>iex Ask Price</th>
+            <th>iex Ask Size</th>
+            <th>Market Cap</th>
+            <th>pe Ratio</th>
+            <th>week 52 High</th>
+            <th>week 52 Low</th>
+            <th>ytd Change</th>
+          </tr>
+        </thead>
+        <% @result.each_with_index do |row, index| %>
+          <tr>
+            <% row.each do |value| %>
+                <td><%= value[1] %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
 <script type="text/javascript">
-  //Set the menu active, is-active
+  // Set the menu active, is-active
   // $("[name='navbar_list']").removeClass("is-active")
   // $("[name='navbar_list']").addClass("is-active")
+
+
 </script>

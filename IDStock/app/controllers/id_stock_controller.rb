@@ -12,14 +12,34 @@ class IdStockController < ApplicationController
   end
 
   def TopGainer
+    @result = JSON.parse(get_SecurityList("gainers"))
+
   end
 
   def TopLoser
+
+    @result = JSON.parse(get_SecurityList("losers"))
+    @result.each { |item|
+      item["openTime"] =          UnixTimeConvert(item["openTime"])
+      item["closeTime"] =         UnixTimeConvert(item["closeTime"])
+      item["latestUpdate"] =      UnixTimeConvert(item["latestUpdate"])
+      item["delayedPriceTime"] =  UnixTimeConvert(item["delayedPriceTime"])
+      item["extendedPriceTime"] = UnixTimeConvert(item["extendedPriceTime"])
+      item["iexLastUpdated"]    = UnixTimeConvert(item["iexLastUpdated"])
+
+      #{} "change": -46.49, price
+      #{} "changePercent": -0.5575, %
+
+    }
+
   end
 
   def UpComingDividend
   end
 
+  def UnixTimeConvert(varUnix)
+      return Time.at(varUnix).strftime "%m-%d-%Y %H:%M:%S"
+  end
 
   def get_SecuritySymbol
 
@@ -66,6 +86,24 @@ class IdStockController < ApplicationController
    )
 
    render json: response
+  end
+
+  def get_SecurityList(listType)
+
+    # /stock/market/list/mostactive
+    # /stock/market/list/gainers
+    # /stock/market/list/losers
+    # /stock/market/list/iexvolume
+    # /stock/market/list/iexpercent
+
+    base_url = 'https://sandbox.iexapis.com/stable/stock/market/list/' + listType + '?token='+ Rails.application.credentials.IEX[:SAND_TOKEN]
+
+    response = RestClient::Request.execute(
+      method: :get,
+      url: base_url
+    )
+
+    return response
   end
 
 end
